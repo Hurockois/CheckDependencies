@@ -22,9 +22,10 @@ public class FileToInspect {
 
 		List<String> includes = new ArrayList<>();
 		System.out.println("Extracting data from " + this.getPath());
-		try (Stream<String> stream = Files.lines(Paths.get(this.path))) {
+		try (Stream<String> stream = Files.lines(Paths.get(this.path), StandardCharsets.ISO_8859_1)) {
 
-			includes = stream.filter(line -> line.startsWith("#include")).map(str -> str.replaceAll("\"", ""))
+			includes = stream.filter(line -> line.startsWith("#include"))
+					.map(str -> str.replaceAll("\"", ""))
 					.collect(Collectors.toList());
 
 		} catch (MalformedInputException e) {
