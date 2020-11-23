@@ -31,7 +31,7 @@ public class Main {
 			try {
 				filePrintWriter = new PrintWriter(outputFileName);
 				filePrintWriter.println("DEPENDENCY | PATH IN " + name1 +" | PATH IN " + name2);
-				
+				System.out.println("DEPENDENCY | PATH IN " + name1 +" | PATH IN " + name2);
 				List<String> listOfFilesContainingPotentialIncludes = WalkPath(path1, null);
 				List<String> listOfFilesPotentiallyIncluded = WalkPath(path2, "h");
 
@@ -44,6 +44,7 @@ public class Main {
 							String nameInclude = new File(i).getName();
 							if (includes.contains(nameInclude)) {
 								filePrintWriter.println(nameInclude + " | " + file.getPath() + " | " + i );
+								System.out.println(nameInclude + " | " + file.getPath() + " | " + i );
 								compteur+=1;
 							}
 						}
