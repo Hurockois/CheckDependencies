@@ -29,7 +29,7 @@ public class Main {
 				filePrintWriter = new PrintWriter(outputFileName);
 				filePrintWriter.println("DEPENDENCY | PATH IN " + name1 +" | PATH IN " + name2);
 				
-				List<String> listOfFilesContainingPotentialIncludes = WalkPath(path1, ".cpp");
+				List<String> listOfFilesContainingPotentialIncludes = WalkPath(path1, "cpp");
 				List<String> listOfFilesPotentiallyIncluded = WalkPath(path2, "h");
 
 				for (String f : listOfFilesContainingPotentialIncludes) {
