@@ -19,7 +19,7 @@ public class FileToInspect {
 	public List<String> extractIncludes() {
 
 		List<String> includes = new ArrayList<>();
-
+		System.out.println("Extracting data from " + this.getPath());
 		try (Stream<String> stream = Files.lines(Paths.get(this.path))) {
 
 	           includes = stream
