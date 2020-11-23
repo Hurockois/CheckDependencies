@@ -19,24 +19,14 @@ public class FileToInspect {
 	}
 
 	public List<String> extractIncludes() {
-
+		
 		List<String> includes = new ArrayList<>();
-		System.out.println("Extracting data from " + this.getPath());
+		//System.out.println("Extracting data from " + this.getPath());
 		try (Stream<String> stream = Files.lines(Paths.get(this.path), StandardCharsets.ISO_8859_1)) {
 
 			includes = stream.filter(line -> line.startsWith("#include"))
 					.map(str -> str.replaceAll("\"", ""))
-					.collect(Collectors.toList());
-
-		} catch (MalformedInputException e) {
-			e.printStackTrace();
-			try (Stream<String> stream = Files.lines(Paths.get(this.path), StandardCharsets.US_ASCII)) {
-
-				includes = stream.filter(line -> line.startsWith("#include")).map(str -> str.replaceAll("\"", ""))
-						.collect(Collectors.toList());
-			} catch (IOException e2) {
-				e2.printStackTrace();
-			}
+					.collect(Collectors.toList());		
 
 		} catch (IOException e) {
 			e.printStackTrace();

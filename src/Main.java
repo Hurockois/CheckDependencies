@@ -16,8 +16,11 @@ public class Main {
 	public static void main(String[] args) {
 
 		if (args.length == 2) {
+			int compteur =0;
+			
 			String path1 = args[0];
 			String path2 = args[1];
+			
 			String name1 = new File(path1).getName();
 			String name2 = new File(path2).getName();
 
@@ -41,6 +44,7 @@ public class Main {
 							String nameInclude = new File(i).getName();
 							if (includes.contains(nameInclude)) {
 								filePrintWriter.println(nameInclude + " | " + file.getPath() + " | " + i );
+								compteur+=1;
 							}
 						}
 					}
@@ -52,7 +56,9 @@ public class Main {
 				e.printStackTrace();
 			} finally {
 				// always close the output stream
+				
 				if (filePrintWriter != null) {
+					filePrintWriter.println("Treatment finished: "+ compteur + " dependencies found");
 					filePrintWriter.close();
 				}
 			}
