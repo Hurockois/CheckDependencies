@@ -36,7 +36,7 @@ public class Main {
 					FileToInspect file = new FileToInspect(f);
 					if (file.extractIncludes().size() != 0) {
 						List<String> includes = file.extractIncludes();
-						includes.forEach(System.out::println);
+						//includes.forEach(System.out::println);
 						for (String i : listOfFilesPotentiallyIncluded) {
 							String nameInclude = new File(i).getName();
 							if (includes.contains(nameInclude)) {
